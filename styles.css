@@ -108,10 +108,13 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   z-index: 100;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
+  flex-wrap: nowrap; /* Yeh wrap hone se rokega */
 }
 
 .nav-hidden {
@@ -132,6 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .nav-logo svg {
@@ -143,6 +147,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-center {
   display: flex;
   gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .nav-link {
@@ -155,6 +160,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.2s ease;
   position: relative;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -171,6 +177,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .nav-btn {
@@ -186,6 +193,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--fg-secondary);
   transition: all 0.2s ease;
   position: relative;
+  flex-shrink: 0;
 }
 
 .nav-btn:hover {
@@ -223,12 +231,71 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--accent);
   cursor: pointer;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .profile-avatar-nav:hover {
   transform: scale(1.05);
 }
 
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  padding: 8px 16px;
+  z-index: 100;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 16px;
+    gap: 8px;
+  }
+  .nav-center {
+    display: none !important; /* Desktop links mobile par gayab */
+  }
+  /* Mobile par top bar me sirf logo aur profile dikhega, baaki hidden */
+  .nav-right .nav-btn#themeToggle,
+  .nav-right .nav-btn#notifBtn,
+  .nav-right .nav-btn#logoutBtn {
+    display: none !important; 
+  }
+  .mobile-nav {
+    display: flex !important; /* Bottom navbar mobile par show */
+  }
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--fg-secondary);
+  text-decoration: none;
+  font-size: 0.7rem;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mobile-nav-item.active {
+  color: var(--accent);
+}
+
+.mobile-nav-item svg {
+  width: 24px;
+  height: 24px;
+}
 /* Main Content */
 .main-content {
   padding-top: 80px;
