@@ -97,14 +97,14 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
 }
 
-/* Mobile Navigation */
+/* Mobile Navigation - By default laptop par hidden rahega */
 .mobile-nav {
-  display: none;
+  display: none !important; /* Yeh ensure karega ki laptop par ye kabhi na aaye */
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px; /* Fixed height di hai taaki zameen le na le */
+  height: 64px;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -112,14 +112,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 10px;
   z-index: 100;
   justify-content: space-around;
-  align-items: center; /* Center mein rakhne ke liye */
+  align-items: center;
 }
 
+/* Sirf Mobile par (jab screen 768px se choti ho) ye show hoga */
 @media (max-width: 768px) {
-  .nav {
-    padding: 0 16px;
-    gap: 8px;
+  .mobile-nav {
+    display: flex !important; /* Sirf mobile par show karega */
   }
+  
+  /* Mobile par top navbar se extra icons hatana */
   .nav-center {
     display: none !important; 
   }
@@ -127,9 +129,6 @@ h1, h2, h3, h4, h5, h6 {
   .nav-right .nav-btn#notifBtn,
   .nav-right .nav-btn#logoutBtn {
     display: none !important; 
-  }
-  .mobile-nav {
-    display: flex !important; 
   }
 }
 
@@ -146,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
   cursor: pointer;
-  height: 100%; /* Pura navbar height le, but overflow na ho */
+  height: 100%;
 }
 
 .mobile-nav-item.active {
@@ -156,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav-item svg {
   width: 24px;
   height: 24px;
-  flex-shrink: 0; /* Yeh zaroori hai taaki icon chota hi rahe */
+  flex-shrink: 0;
 }/* Main Content */
 .main-content {
   padding-top: 80px;
