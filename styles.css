@@ -97,147 +97,6 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
 }
 
-/* Navigation */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  z-index: 100;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
-  flex-wrap: nowrap; /* Yeh wrap hone se rokega */
-}
-
-.nav-hidden {
-  display: none !important;
-}
-
-.nav-logo {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 1.55rem;
-  font-weight: 600;
-  background: linear-gradient(120deg, var(--accent), var(--gold));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.nav-logo svg {
-  color: var(--accent);
-  width: 28px;
-  height: 28px;
-}
-
-.nav-center {
-  display: flex;
-  gap: 8px;
-  flex-wrap: nowrap;
-}
-
-.nav-link {
-  padding: 10px 20px;
-  border-radius: var(--radius-md);
-  color: var(--fg-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.nav-link:hover {
-  color: var(--fg-primary);
-  background: var(--bg-tertiary);
-}
-
-.nav-link.active {
-  color: var(--accent);
-  background: var(--accent-soft);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.nav-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--bg-tertiary);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--fg-secondary);
-  transition: all 0.2s ease;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.nav-btn:hover {
-  background: var(--accent-soft);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.nav-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-.notification-badge {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 18px;
-  height: 18px;
-  background: var(--accent);
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.profile-avatar-nav {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--accent);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.profile-avatar-nav:hover {
-  transform: scale(1.05);
-}
-
 /* Mobile Navigation */
 .mobile-nav {
   display: none;
@@ -245,14 +104,15 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   left: 0;
   right: 0;
+  height: 64px; /* Fixed height di hai taaki zameen le na le */
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--glass-border);
-  padding: 8px 16px;
+  padding: 0 10px;
   z-index: 100;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; /* Center mein rakhne ke liye */
 }
 
 @media (max-width: 768px) {
@@ -261,16 +121,15 @@ h1, h2, h3, h4, h5, h6 {
     gap: 8px;
   }
   .nav-center {
-    display: none !important; /* Desktop links mobile par gayab */
+    display: none !important; 
   }
-  /* Mobile par top bar me sirf logo aur profile dikhega, baaki hidden */
   .nav-right .nav-btn#themeToggle,
   .nav-right .nav-btn#notifBtn,
   .nav-right .nav-btn#logoutBtn {
     display: none !important; 
   }
   .mobile-nav {
-    display: flex !important; /* Bottom navbar mobile par show */
+    display: flex !important; 
   }
 }
 
@@ -278,14 +137,16 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   color: var(--fg-secondary);
   text-decoration: none;
-  font-size: 0.7rem;
-  padding: 8px 12px;
+  font-size: 0.65rem;
+  padding: 8px 4px;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
   cursor: pointer;
+  height: 100%; /* Pura navbar height le, but overflow na ho */
 }
 
 .mobile-nav-item.active {
@@ -295,8 +156,8 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav-item svg {
   width: 24px;
   height: 24px;
-}
-/* Main Content */
+  flex-shrink: 0; /* Yeh zaroori hai taaki icon chota hi rahe */
+}/* Main Content */
 .main-content {
   padding-top: 80px;
   padding-bottom: 100px;
